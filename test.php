@@ -1,8 +1,8 @@
 <?php
 $userName = 'angelinajolieofficial';
 
-$dataStart = '<script type="text/javascript">window._sharedData = ';
-$dataEnd = ';</script><script type="text/javascript">';
+$dataStart = 'window._sharedData = ';
+$dataEnd = ';</script>';
 
 $result = @file_get_contents("https://www.instagram.com/{$userName}/");
 
