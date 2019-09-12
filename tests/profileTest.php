@@ -22,6 +22,12 @@ class profileTest extends PHPUnit_Framework_TestCase
         $this->assertInternalType('array', $profile->toArray());
     }
 
+    public function testProfileName() {
+        $profile = $this->getProfile();
+
+        $this->assertInternalType('string', $profile->getFullName());
+    }
+
     public function testMedia() {
         $profile = $this->getProfile();
 
