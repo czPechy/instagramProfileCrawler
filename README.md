@@ -4,7 +4,7 @@
 
 # instagramProfileCrawler
 - Get latest media from instagram profile without API
-- This is only HTML crawler (get json from instagram page)
+- ~~This is only HTML crawler (get json from instagram page)~~
 - If Instagram made some change, please send Issue
 - If you want some more data, send Issue or MR
 
