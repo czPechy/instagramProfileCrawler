@@ -17,12 +17,12 @@ class Parser
             'profile_pic_url', 'profile_pic_url_hd', 'username', 'connected_fb_page'
         ];
         foreach($getUserData as $key) {
-            $userData[$key] = isset($json['graphql']['user'][$key]) ? $json['graphql']['user'][$key] : null;
+            $userData[$key] = isset($json[$key]) ? $json[$key] : null;
         }
 
         $media = [];
-        if(isset($json['graphql']['user']['edge_owner_to_timeline_media']['edges']) && is_array($json['graphql']['user']['edge_owner_to_timeline_media']['edges'])) {
-            foreach($json['graphql']['user']['edge_owner_to_timeline_media']['edges'] as $edgeMedia) {
+        if(isset($json['edge_owner_to_timeline_media']['edges']) && is_array($json['edge_owner_to_timeline_media']['edges'])) {
+            foreach($json['edge_owner_to_timeline_media']['edges'] as $edgeMedia) {
                 $mediaData = $edgeMedia['node'];
                 $mediaText = isset($edgeMedia['node']['edge_media_to_caption']['edges'][0]['node']['text']) ? $edgeMedia['node']['edge_media_to_caption']['edges'][0]['node']['text'] : '';
 
@@ -57,25 +57,16 @@ class Parser
 
     /**
      * @param $output
-     * @return \stdClass
+     * @return array
      * @throws ParserException
      */
     public static function parseJson( $output )
     {
-        $dataStart = 'window._sharedData = ';
-        $dataEnd = ';</script>';
-
-        $startPos = strpos($output, $dataStart);
-        $output = substr($output, $startPos + strlen($dataStart));
-
-        $endPos = strpos($output, $dataEnd);
-        $output = substr($output, 0, $endPos);
-
         $instaData = @json_decode($output, true);
-        if(!$instaData || !isset($instaData['entry_data']['ProfilePage']) || !is_array($instaData['entry_data']['ProfilePage'])) {
+        if(!$instaData || !isset($instaData['data']['user'])) {
             throw new ParserException('Cannot parse JSON from Instagram, please create Issue');
         }
-        return array_shift($instaData['entry_data']['ProfilePage']);
+        return $instaData['data']['user'];
     }
 
 }

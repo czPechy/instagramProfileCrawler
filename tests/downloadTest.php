@@ -6,7 +6,7 @@ class downloadTest extends PHPUnit_Framework_TestCase
 
     public function testDownloadProfile()
     {
-        $client = new \czPechy\instagramProfileCrawler\Client('angelinajolieofficial');
+        $client = new \czPechy\instagramProfileCrawler\Client('angelinajolie');
         $profile = $client->getProfile();
 
         $this->assertInstanceOf(\czPechy\instagramProfileCrawler\Profile::class, $profile);

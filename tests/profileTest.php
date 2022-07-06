@@ -9,7 +9,7 @@ class profileTest extends PHPUnit_Framework_TestCase
     public function getProfile()
     {
         if(!$this->profile) {
-            $client = new \czPechy\instagramProfileCrawler\Client( 'angelinajolieofficial' );
+            $client = new \czPechy\instagramProfileCrawler\Client( 'angelinajolie' );
             $this->profile = $client->getProfile();
         }
 

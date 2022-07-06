@@ -34,7 +34,14 @@ class Client
      */
     private function downloadData()
     {
-        $page_data = @file_get_contents( 'https://www.instagram.com/' . $this->profileName . '/' );
+		$opts = [
+			'http' => [
+				'method' => 'GET',
+				'header' => "x-ig-app-id: 936619743392459\r\n"
+			]
+		];
+		$context = stream_context_create($opts);
+        $page_data = @file_get_contents( 'https://i.instagram.com/api/v1/users/web_profile_info/?username=' . $this->profileName, false, $context);
         if ( !$page_data ) {
             throw new ClientException( 'Cannot get data from Instagram' );
         }

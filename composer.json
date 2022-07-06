@@ -2,7 +2,8 @@
     "name": "czpechy/instagramprofilecrawler",
     "description": "Way to get latest news from instagram profile",
     "require": {
-        "php": ">=5.6.0"
+        "php": ">=5.6.0",
+        "ext-json": "*"
     },
     "homepage": "https://github.com/czPechy/instagramProfileCrawler",
     "license": "MIT",
