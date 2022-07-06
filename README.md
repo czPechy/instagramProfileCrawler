@@ -17,7 +17,7 @@ $ composer require czpechy/instagramprofilecrawler
 ```php
 include_once __DIR__ . '/../vendor/autoload.php';
 
-$client = new \czPechy\instagramProfileCrawler\Client('angelinajolieofficial');
+$client = new \czPechy\instagramProfileCrawler\Client('angelinajolie');
 
 /** @var \czPechy\instagramProfileCrawler\Profile $profile */
 $profile = $client->getProfile();
@@ -27,7 +27,7 @@ var_dump($profile->toArray());
 ```php
 array(
   'id' => "45276652",
-  'username' => "angelinajolieofficial",
+  'username' => "angelinajolie",
   'fullName' => "Angelina Jolie",
   'biography' => "People will always...",
   'followers' => 8848810,
